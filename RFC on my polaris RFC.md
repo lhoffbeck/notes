@@ -118,8 +118,8 @@ While we only handle 2 pluralization cases, the [Unicode CLDR rules](http://cldr
 Effectively, our copy may be completely wrong in other locales. As an example under our current implementation, in Arabic we may have:
 
 ```
-- 1 book: كتاب  (singular, we handle this 👍)
-- 100 books: ١٠٠ (plural, we handle this 👍)
+- 1 book: كتاب  (👍 singular, we handle this)
+- 100 books: ١٠٠ (👍 plural, we handle this)
 - 0 books: ٠ كتاب (🛑 we don't handle this)
 - 3 books: ٣ كتب  (🛑 we show ١٠٠)
 - 11 books: ١١ كتابًا  (🛑 we show ١٠٠)

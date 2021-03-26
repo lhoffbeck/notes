@@ -2,7 +2,7 @@
 
 When components require that a consumer pass a pluralized version of a string, Polaris currently restricts the consumer to a English-centric pluralization format. This isn't very inclusive and can reduce merchant trust in our UI for non-English locales.
 
-This issue has been reported across a number of repos:
+Existing issues:
 
 - [polaris-react #4031](https://github.com/Shopify/polaris-react/issues/4031)
 - [polaris-react #1786](https://github.com/Shopify/polaris-react/issues/1786)
@@ -11,11 +11,7 @@ This issue has been reported across a number of repos:
 ## Goal
 Hopefully this RFC helps build context, but I'm planning to keep this pretty surface-level for now--just wanted to get a gut check on approach and see if this is something that has legs.
 
-## Details
-I want to summarize the problem here and look at some specific examples of where we're seeing problems.
-
-
-### Example
+## So... what's the issue?
 
 We can look at `IndexTable` as a specific example. The component expects 2 `resourceName` values:
 

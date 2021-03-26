@@ -33,8 +33,8 @@ The consumer then provides this value when using the component:
 <IndexTable
   ...
   resourceName={{
-    singular: 'Discount code',
-    plural: 'Discount codes',
+    singular: 'Cactus',
+    plural: 'Cactusses',
   }}
   ...
 />
@@ -102,14 +102,14 @@ function getPaginatedSelectAllAction() {
 ```
 
 ### The Issue
-(stolen from @movermeyer's great polaris-react issue #4031)
+(stolen from @movermeyer's great [polaris-react issue #4031](https://github.com/Shopify/polaris-react/issues/4031))
 
 > Other languages use different pluralization forms depending on very complicated rules.
   Hard-coding [`singular` and `plural` as the options for `ResourceList`](https://polaris.shopify.com/components/lists-and-tables/resource-list#prop-resourceName:~:text=prominence-,resourceName) hard-codes the English pluralization rules, and means that it is incorrect for any language other than English.
 
 While we only handle 2 pluralization cases, the [Unicode CLDR rules](http://cldr.unicode.org/index/cldr-spec/plural-rules) give us 6 different cases we'd need to account for in order to handle this correctly for all locales. This [Pluralization for JavaScript](https://alistapart.com/article/pluralization-for-javascript/) article is a fantastic resource for further reading, but the relevant information for our case is: 
 
-> CLDR defines up to six different plural forms. Each form is assigned a name: zero, one, two, few, many, or other. Not all locales need every form; remember, English only has two: one and other. The name of each form is based on its corresponding plural rule. Here is a CLDR example for the Polish language—a slightly altered version of our earlier counter rules:
+> CLDR defines up to six different plural forms. Each form is assigned a name: `zero`, `one`, `two`, `few`, `many`, or `other`. Not all locales need every form; remember, English only has two: one and other. The name of each form is based on its corresponding plural rule. Here is a CLDR example for the Polish language—a slightly altered version of our earlier counter rules:
 > - If the counter has the integer value of 1, use the plural form `one`.
 > - If the counter has a value that ends in 2–4, excluding 12–14, use the plural form `few`.
 > - If the counter is not 1 and has a value that ends in either 0 or 1, or the counter ends in 5–9, or the counter ends in 12–14, use the plural form `many`.
@@ -118,11 +118,11 @@ While we only handle 2 pluralization cases, the [Unicode CLDR rules](http://cldr
 Effectively, our copy may be completely wrong in other locales. As an example under our current implementation, in Arabic we may have:
 
 ```
-- 1 book: كتاب  (singular)
-- 100 books: ١٠٠ (plural)
-- 0 books: ٠ كتاب (this is wrong)
-- 3 books: ٣ كتب  (this is wrong)
-- 11 books: ١١ كتابًا  (this is wrong)
+- 1 book: كتاب  (singular, we handle this 👍)
+- 100 books: ١٠٠ (plural, we handle this 👍)
+- 0 books: ٠ كتاب (🛑 we don't handle this)
+- 3 books: ٣ كتب  (🛑 we show ١٠٠)
+- 11 books: ١١ كتابًا  (🛑 we show ١٠٠)
 ```
 
 ### Issue Scope

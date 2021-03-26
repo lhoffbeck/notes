@@ -170,7 +170,7 @@ The consumer provides this value when using the component:
 ```tsx
 <IndexTable
   ...
-  resourceNameFormatString='{COUNT, plural, one {Cactus} two {Cactii} other {Cactusses}}'
+  resourceNameFormatString='{COUNT, plural, one {Cactus} few {Cactii} other {Cactusses}}'
   ...
 />
 ```
@@ -270,7 +270,7 @@ The consumer provides this value when using the component:
   ...
   resourceName={{
     one: 'Cactus',
-    two: 'Cactii',
+    few: 'Cactii',
     other: 'Cactusses',
   }}
   ...

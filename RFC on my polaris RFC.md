@@ -213,17 +213,14 @@ function getPaginatedSelectAllAction() {
 
 ...
 <div className={styles.LoadingPanel}>
-  <div className={styles.LoadingPanelRow}>
-    <Spinner size="small" />
-    <span className={styles.LoadingPanelText}>
-      {i18n.translate(
-        'Polaris.IndexTable.resourceLoadingAccessibilityLabel',
-        {
-          resourceNamePlural: pluralize(resourceNameFormatString, PAGE_SIZE),
-        },
-      )}
-    </span>
-  </div>
+  ...
+    {i18n.translate(
+      'Polaris.IndexTable.resourceLoadingAccessibilityLabel',
+      {
+        resourceNamePlural: pluralize(resourceNameFormatString, PAGE_SIZE),
+      },
+    )}
+  ...
 </div>
 ...
 ```
@@ -346,8 +343,8 @@ This is how this could work in our IndexTable example:
 // index-provider/context.ts
 
 export interface IndexContextType {
- ...
-    pluralizeResourceName(count: number): string;
+  ...
+  pluralizeResourceName(count: number): string;
   ...
 }
 ```
